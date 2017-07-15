@@ -6,7 +6,8 @@ target 'WorkList' do
   use_frameworks!
 
 pod 'Alamofire', '~> 4.4'
-pod 'ChameleonFramework/Swift'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+
 
 
   # Pods for WorkList
