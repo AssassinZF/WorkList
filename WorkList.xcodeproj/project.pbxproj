@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		542296021F185E39009EBADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542296011F185E39009EBADD /* AppDelegate.swift */; };
-		542296041F185E39009EBADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542296031F185E39009EBADD /* ViewController.swift */; };
 		542296071F185E39009EBADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542296051F185E39009EBADD /* Main.storyboard */; };
 		542296091F185E39009EBADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542296081F185E39009EBADD /* Assets.xcassets */; };
 		5422960C1F185E39009EBADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5422960A1F185E39009EBADD /* LaunchScreen.storyboard */; };
@@ -19,6 +18,14 @@
 		ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1AA1F19C83A00221E00 /* BaseNavigationController.swift */; };
 		ABCBF1AD1F19C87C00221E00 /* ProjectSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1AC1F19C87C00221E00 /* ProjectSetting.swift */; };
 		ABCBF1AF1F19C97700221E00 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1AE1F19C97700221E00 /* Color.swift */; };
+		ABCBF1B91F19DAF700221E00 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1B61F19DAF700221E00 /* MainViewController.swift */; };
+		ABCBF1BB1F19DBCD00221E00 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1BA1F19DBCD00221E00 /* Task.swift */; };
+		ABCBF1BD1F19DD1000221E00 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1BC1F19DD1000221E00 /* TaskTableViewCell.swift */; };
+		ABCBF1C01F1A18DE00221E00 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1BF1F1A18DE00221E00 /* DataManager.swift */; };
+		ABCBF1C31F1A1FAA00221E00 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C11F1A1FAA00221E00 /* Realm.framework */; };
+		ABCBF1C41F1A1FAA00221E00 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C11F1A1FAA00221E00 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ABCBF1C51F1A1FAA00221E00 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */; };
+		ABCBF1C61F1A1FAA00221E00 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58BACE12D3689B9188FD385 /* Pods_WorkListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4456212590B0A1F9E9CF1EE4 /* Pods_WorkListUITests.framework */; };
 		EB468490A5FCA961204E0891 /* Pods_WorkList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098FDC188A1C43BC072CBDF6 /* Pods_WorkList.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +47,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		ABCBF1C71F1A1FAA00221E00 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ABCBF1C61F1A1FAA00221E00 /* RealmSwift.framework in Embed Frameworks */,
+				ABCBF1C41F1A1FAA00221E00 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		098FDC188A1C43BC072CBDF6 /* Pods_WorkList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8E46BF8B5EFBB2B0876483 /* Pods-WorkListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListUITests/Pods-WorkListUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -47,7 +69,6 @@
 		4D40415B6A24299863A514F9 /* Pods-WorkListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListUITests/Pods-WorkListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		542295FE1F185E39009EBADD /* WorkList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542296011F185E39009EBADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		542296031F185E39009EBADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		542296061F185E39009EBADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		542296081F185E39009EBADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5422960B1F185E39009EBADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +84,12 @@
 		ABCBF1AA1F19C83A00221E00 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		ABCBF1AC1F19C87C00221E00 /* ProjectSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSetting.swift; sourceTree = "<group>"; };
 		ABCBF1AE1F19C97700221E00 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		ABCBF1B61F19DAF700221E00 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		ABCBF1BA1F19DBCD00221E00 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		ABCBF1BC1F19DD1000221E00 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		ABCBF1BF1F1A18DE00221E00 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		ABCBF1C11F1A1FAA00221E00 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		B1FCC0B04594C99DF126C57A /* Pods_WorkListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70E85C464CF470B274E77E2 /* Pods-WorkList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkList/Pods-WorkList.debug.xcconfig"; sourceTree = "<group>"; };
 		E54E4EBB1A9622DB985DD151 /* Pods-WorkListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListTests/Pods-WorkListTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +101,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABCBF1C31F1A1FAA00221E00 /* Realm.framework in Frameworks */,
 				EB468490A5FCA961204E0891 /* Pods_WorkList.framework in Frameworks */,
+				ABCBF1C51F1A1FAA00221E00 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +129,8 @@
 		542295F51F185E39009EBADD = {
 			isa = PBXGroup;
 			children = (
+				ABCBF1C11F1A1FAA00221E00 /* Realm.framework */,
+				ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */,
 				542296001F185E39009EBADD /* WorkList */,
 				542296151F185E39009EBADD /* WorkListTests */,
 				542296201F185E39009EBADD /* WorkListUITests */,
@@ -124,10 +155,9 @@
 			children = (
 				ABCBF1A41F19A81000221E00 /* Base */,
 				ABCBF1A51F19A81000221E00 /* Extension */,
-				ABCBF1A61F19A81000221E00 /* Module */,
 				ABCBF1A71F19A81000221E00 /* Setting */,
+				ABCBF1B21F19DAAF00221E00 /* Class */,
 				542296011F185E39009EBADD /* AppDelegate.swift */,
-				542296031F185E39009EBADD /* ViewController.swift */,
 				542296051F185E39009EBADD /* Main.storyboard */,
 				542296081F185E39009EBADD /* Assets.xcassets */,
 				5422960A1F185E39009EBADD /* LaunchScreen.storyboard */,
@@ -194,19 +224,55 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		ABCBF1A61F19A81000221E00 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
 		ABCBF1A71F19A81000221E00 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				ABCBF1AC1F19C87C00221E00 /* ProjectSetting.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		ABCBF1B21F19DAAF00221E00 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBF1BE1F1A18C000221E00 /* DBManager */,
+				ABCBF1B51F19DAF700221E00 /* Controller */,
+				ABCBF1B71F19DAF700221E00 /* Model */,
+				ABCBF1B81F19DAF700221E00 /* View */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		ABCBF1B51F19DAF700221E00 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBF1B61F19DAF700221E00 /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ABCBF1B71F19DAF700221E00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBF1BA1F19DBCD00221E00 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABCBF1B81F19DAF700221E00 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBF1BC1F19DD1000221E00 /* TaskTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABCBF1BE1F1A18C000221E00 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBF1BF1F1A18DE00221E00 /* DataManager.swift */,
+			);
+			path = DBManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +288,7 @@
 				542295FC1F185E39009EBADD /* Resources */,
 				0261F9A7A43E5418354C320B /* [CP] Embed Pods Frameworks */,
 				C6492EC2CE78C896C5E257A3 /* [CP] Copy Pods Resources */,
+				ABCBF1C71F1A1FAA00221E00 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -491,11 +558,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABCBF1BD1F19DD1000221E00 /* TaskTableViewCell.swift in Sources */,
 				ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */,
-				542296041F185E39009EBADD /* ViewController.swift in Sources */,
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,
 				ABCBF1AD1F19C87C00221E00 /* ProjectSetting.swift in Sources */,
+				ABCBF1B91F19DAF700221E00 /* MainViewController.swift in Sources */,
 				ABCBF1A91F19C7FF00221E00 /* BaseViewController.swift in Sources */,
+				ABCBF1BB1F19DBCD00221E00 /* Task.swift in Sources */,
+				ABCBF1C01F1A18DE00221E00 /* DataManager.swift in Sources */,
 				ABCBF1AF1F19C97700221E00 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +722,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J57B9DGDTL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WorkList/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -667,6 +741,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J57B9DGDTL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WorkList/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

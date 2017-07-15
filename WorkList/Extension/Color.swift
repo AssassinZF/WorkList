@@ -11,6 +11,6 @@ import UIKit
 import ChameleonFramework
 
 extension UIColor{
-    static var themeColor:UIColor = UIColor.flatGray
+    static var themeColor:UIColor{ return UIColor.flatGray}
     
 }
