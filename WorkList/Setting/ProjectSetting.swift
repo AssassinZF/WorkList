@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 func dbugLog<T>(message: T,
               file: String = #file,
@@ -17,3 +18,10 @@ func dbugLog<T>(message: T,
         print("\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
     #endif
 }
+
+//version
+func IS_IOS8() -> Bool { return (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0 }
+
+//screen size
+let kScreenHeight = UIScreen.main.bounds.size.height
+let kScreenWidth = UIScreen.main.bounds.size.width

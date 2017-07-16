@@ -26,6 +26,11 @@
 		ABCBF1C41F1A1FAA00221E00 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C11F1A1FAA00221E00 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ABCBF1C51F1A1FAA00221E00 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */; };
 		ABCBF1C61F1A1FAA00221E00 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ABDDB0411F1A324200C4B986 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB0401F1A324200C4B986 /* InputView.swift */; };
+		ABDDB0431F1A356C00C4B986 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB0421F1A356C00C4B986 /* CustomTextView.swift */; };
+		ABDDB0471F1B456300C4B986 /* WeaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB0461F1B456300C4B986 /* WeaterView.swift */; };
+		ABDDB0491F1B4C8700C4B986 /* OvewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB0481F1B4C8700C4B986 /* OvewListViewController.swift */; };
+		ABDDB04B1F1B543B00C4B986 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB04A1F1B543B00C4B986 /* Delay.swift */; };
 		B58BACE12D3689B9188FD385 /* Pods_WorkListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4456212590B0A1F9E9CF1EE4 /* Pods_WorkListUITests.framework */; };
 		EB468490A5FCA961204E0891 /* Pods_WorkList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098FDC188A1C43BC072CBDF6 /* Pods_WorkList.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +95,11 @@
 		ABCBF1BF1F1A18DE00221E00 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		ABCBF1C11F1A1FAA00221E00 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		ABCBF1C21F1A1FAA00221E00 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		ABDDB0401F1A324200C4B986 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		ABDDB0421F1A356C00C4B986 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		ABDDB0461F1B456300C4B986 /* WeaterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeaterView.swift; sourceTree = "<group>"; };
+		ABDDB0481F1B4C8700C4B986 /* OvewListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvewListViewController.swift; sourceTree = "<group>"; };
+		ABDDB04A1F1B543B00C4B986 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		B1FCC0B04594C99DF126C57A /* Pods_WorkListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70E85C464CF470B274E77E2 /* Pods-WorkList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkList/Pods-WorkList.debug.xcconfig"; sourceTree = "<group>"; };
 		E54E4EBB1A9622DB985DD151 /* Pods-WorkListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListTests/Pods-WorkListTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				ABCBF1AE1F19C97700221E00 /* Color.swift */,
+				ABDDB04A1F1B543B00C4B986 /* Delay.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -247,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				ABCBF1B61F19DAF700221E00 /* MainViewController.swift */,
+				ABDDB0481F1B4C8700C4B986 /* OvewListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -263,6 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				ABCBF1BC1F19DD1000221E00 /* TaskTableViewCell.swift */,
+				ABDDB0401F1A324200C4B986 /* InputView.swift */,
+				ABDDB0421F1A356C00C4B986 /* CustomTextView.swift */,
+				ABDDB0461F1B456300C4B986 /* WeaterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -558,13 +573,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDDB0491F1B4C8700C4B986 /* OvewListViewController.swift in Sources */,
 				ABCBF1BD1F19DD1000221E00 /* TaskTableViewCell.swift in Sources */,
 				ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */,
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,
 				ABCBF1AD1F19C87C00221E00 /* ProjectSetting.swift in Sources */,
 				ABCBF1B91F19DAF700221E00 /* MainViewController.swift in Sources */,
+				ABDDB0431F1A356C00C4B986 /* CustomTextView.swift in Sources */,
+				ABDDB0471F1B456300C4B986 /* WeaterView.swift in Sources */,
 				ABCBF1A91F19C7FF00221E00 /* BaseViewController.swift in Sources */,
 				ABCBF1BB1F19DBCD00221E00 /* Task.swift in Sources */,
+				ABDDB0411F1A324200C4B986 /* InputView.swift in Sources */,
+				ABDDB04B1F1B543B00C4B986 /* Delay.swift in Sources */,
 				ABCBF1C01F1A18DE00221E00 /* DataManager.swift in Sources */,
 				ABCBF1AF1F19C97700221E00 /* Color.swift in Sources */,
 			);

@@ -37,14 +37,4 @@ class Task: Object{
     var outTime:Bool = false
     var taskRand:TaskRand = .low
     
-    
-    init(taskInfo:String,endTime:Date?) {
-        self.taskInfo = taskInfo
-        self.endTime = endTime
-        self.taskRand = self.taskRand.currentRand(endTime: endTime!)
-    }
-    
-    
-    
-
 }
