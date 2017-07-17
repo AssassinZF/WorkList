@@ -16,8 +16,7 @@ class OvewListViewController: BaseViewController,UITableViewDataSource,UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        oldFrame = self.view.frame;
+        self.view.backgroundColor = UIColor.gray
         
         myTableView = UITableView(frame: self.view.frame, style: .grouped)
         myTableView?.backgroundColor = UIColor.white
@@ -33,7 +32,7 @@ class OvewListViewController: BaseViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataList.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,8 +44,8 @@ class OvewListViewController: BaseViewController,UITableViewDataSource,UITableVi
     func hiddenListView(){
         UIView.animate(withDuration: animationTime) {
             self.view.frame = self.oldFrame!
-//            let inputView = self.view.superview?.viewWithTag(inputTag)
-//            inputView?.frame = CGRect(x: 0, y: kScreenHeight - KIputHeight, width: kScreenWidth, height: KIputHeight)
+            let inputView = self.view.superview?.viewWithTag(inputTag)
+            inputView?.frame = CGRect(x: 0, y: kScreenHeight - KIputHeight, width: kScreenWidth, height: KIputHeight)
         }
     }
     

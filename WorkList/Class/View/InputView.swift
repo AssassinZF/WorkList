@@ -8,20 +8,27 @@
 
 import UIKit
 
-let inputTag = 100
+public let inputTag = 100
+
+typealias textFinishBlock = (String) -> Void
+
 
 enum InputType {
     case addTask //添加任务
     case search //搜索
 }
 
-let KIputHeight:CGFloat = 44.0
-private let backColor = UIColor.purple
 
-class InputView: UIView {
+public let KIputHeight:CGFloat = 50.0
+
+class InputView: UIView,UITextFieldDelegate {
+    
+    let backColor = UIColor.flatSandDark
+    
+    var textFinish:textFinishBlock?
     
     var inputType:InputType = .addTask
-    var textView:UITextView?
+    var textView:UITextField?
     
     
     override init(frame: CGRect) {
@@ -33,8 +40,21 @@ class InputView: UIView {
         self.frame = frame
         self.backgroundColor = backColor
         
-        textView = UITextView(frame: self.frame)
+        
+        let line = UIView(frame: CGRect(x: 10, y:KIputHeight - 5, width: self.sizeW - 20, height: 1))
+        line.backgroundColor = UIColor.themeColor
+        self.addSubview(line)
+        
+        let textFieldH = 30.0
+        textView = UITextField(frame: CGRect(x: Double(line.originX), y: 10, width: Double(line.sizeW - 40), height: textFieldH))
+        textView?.font = UIFont.systemFont(ofSize: 17)
+        textView?.attributedPlaceholder = NSAttributedString(string:"我想...",attributes:[NSForegroundColorAttributeName: UIColor.themeColor])
+        textView?.tintColor = UIColor.themeColor
+        textView?.clearButtonMode=UITextFieldViewMode.whileEditing  //一直显示清除按钮
+        textView?.returnKeyType = .done
+        textView?.delegate = self
         self.addSubview(textView!)
+        
         
     }
     
@@ -42,6 +62,14 @@ class InputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textView?.resignFirstResponder()
+        if self.textFinish != nil {
+            self.textFinish!(textField.text!)
+        }
+        self.textView?.text = ""
+        return true
+    }
     
 
 

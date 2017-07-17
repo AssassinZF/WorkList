@@ -10,8 +10,8 @@ import UIKit
 import RealmSwift
 
 //任务等级
-enum TaskRand{
-    case low
+enum TaskRand:Int{
+    case low = 1
     case middling
     case height
     func currentRand(endTime:Date) -> TaskRand {
@@ -29,12 +29,23 @@ enum TaskRand{
     }
 }
 
+enum TaskType:Int{
+    case TaskTypeCommon = 1//普通类型
+    case TaskTypeAlert//提醒任务
+}
 
 class Task: Object{
-    var creatTime:Date = Date()
-    var taskInfo:String?
-    var endTime:Date?
-    var outTime:Bool = false
+    dynamic var creatTime:Date = Date()
+    dynamic var taskInfo:String?
+    dynamic var endTime:Date?
+    dynamic var outTime:Bool = false //是否超时
+    dynamic var isFinish:Bool = false
     var taskRand:TaskRand = .low
+    
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
+
+    
     
 }
