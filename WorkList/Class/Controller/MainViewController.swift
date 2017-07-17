@@ -36,6 +36,7 @@ class MainViewController: BaseViewController,UITableViewDataSource,UITableViewDe
         myTableView?.backgroundView = WeaterView()
         self.view.addSubview(myTableView!)
         myTableView?.register(TaskTableViewCell.self, forCellReuseIdentifier: TaskTableViewCell.ReuseIdentifier)
+        
         bottomView = InputView(frame: CGRect.zero)
         self.view.addSubview(bottomView!)
         
@@ -44,6 +45,19 @@ class MainViewController: BaseViewController,UITableViewDataSource,UITableViewDe
             if text.characters.count > 0 {
             }
             
+        }
+        
+        bottomView?.showDatePick = {
+            (isShow:Bool) in
+            var frame = self.datePick?.frame
+            var inputViewF = self.inputView?.frame
+            inputView?.originY = kScreenHeight - self.datePick?.viewH - KIputHeight
+            
+            frame?.origin.y = isShow ? kScreenHeight : kScreenHeight - (self.datePick?.viewH)!
+            UIView.animate(withDuration: animationTime, animations: { 
+                self.datePick?.frame = frame!
+                self.inputView?.frame =
+            })
         }
         
         overList = OvewListViewController()
@@ -55,6 +69,9 @@ class MainViewController: BaseViewController,UITableViewDataSource,UITableViewDe
         //NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_notification:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(_notification:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        datePick = DatePickView(frame: CGRect.zero)
+        self.view.addSubview(datePick!)
     }
     
     deinit {

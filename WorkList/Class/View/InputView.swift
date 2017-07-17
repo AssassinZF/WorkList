@@ -11,6 +11,7 @@ import UIKit
 public let inputTag = 100
 
 typealias textFinishBlock = (String) -> Void
+typealias showDatePickBlock = (Bool)->Void
 
 
 enum InputType {
@@ -26,10 +27,15 @@ class InputView: UIView,UITextFieldDelegate {
     let backColor = UIColor.flatSandDark
     
     var textFinish:textFinishBlock?
+    var showDatePick:showDatePickBlock?
+    
     
     var inputType:InputType = .addTask
     var textView:UITextField?
     
+    var randomBtn:UIButton?
+    
+    var isRandom = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,6 +61,25 @@ class InputView: UIView,UITextFieldDelegate {
         textView?.delegate = self
         self.addSubview(textView!)
         
+        randomBtn = UIButton(type: .custom)
+        randomBtn?.backgroundColor = UIColor.flatBlue
+        randomBtn?.addTarget(self, action: #selector(clickRandomTask), for: .touchUpInside)
+        randomBtn?.frame = CGRect(x: (textView?.frame.maxX)!+5, y: (textView?.originY)!, width: 30, height: 30)
+        self.addSubview(randomBtn!)
+    }
+    
+    func clickRandomTask() {
+        isRandom = !isRandom
+        if isRandom {
+            self.textView?.becomeFirstResponder()
+        }else{
+            self.textView?.resignFirstResponder()
+        }
+        
+        if (self.showDatePick != nil) {
+            self.showDatePick!(isRandom)
+        }
+
         
     }
     

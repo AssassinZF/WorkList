@@ -19,7 +19,7 @@ enum TimeSelect:Int{
 
 class DatePickView: UIView {
     
-    let viewH:CGFloat = 550.0/2
+    public let viewH:CGFloat = 550.0/2
     
     typealias selectDateClosure = (Date?,TimeSelect?,Bool)->Void
     var clickSelectDate:selectDateClosure?
@@ -33,7 +33,7 @@ class DatePickView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         var newFrame = frame
-        newFrame.origin = CGPoint(x: 0, y: kScreenHeight - viewH)
+        newFrame.origin = CGPoint(x: 0, y: kScreenHeight)
         newFrame.size = CGSize(width: kScreenWidth, height: viewH)
         self.frame = newFrame
         
