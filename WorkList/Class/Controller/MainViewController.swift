@@ -43,20 +43,23 @@ class MainViewController: BaseViewController,UITableViewDataSource,UITableViewDe
         bottomView?.textFinish = {
             (text:String)->Void in
             if text.characters.count > 0 {
+                print(text)
             }
             
         }
         
         bottomView?.showDatePick = {
             (isShow:Bool) in
-            var frame = self.datePick?.frame
-            var inputViewF = self.inputView?.frame
-            inputView?.originY = kScreenHeight - self.datePick?.viewH - KIputHeight
             
-            frame?.origin.y = isShow ? kScreenHeight : kScreenHeight - (self.datePick?.viewH)!
-            UIView.animate(withDuration: animationTime, animations: { 
+            if isShow{
+                let offy = kScreenHeight - (self.datePick?.viewH)! - KIputHeight
+                self.changeTextFiledWithAnimation(offy: offy, duration: animationTime)
+            }
+
+            var frame = self.datePick?.frame
+            UIView.animate(withDuration: animationTime, animations: {
+                frame?.origin.y = isShow ? kScreenHeight - (self.datePick?.viewH)! : kScreenHeight
                 self.datePick?.frame = frame!
-                self.inputView?.frame =
             })
         }
         
@@ -72,6 +75,11 @@ class MainViewController: BaseViewController,UITableViewDataSource,UITableViewDe
         
         datePick = DatePickView(frame: CGRect.zero)
         self.view.addSubview(datePick!)
+        
+        datePick?.clickSelectDate = {
+            (date:Date?,TimeSelect:TimeSelect?,hasValue:Bool) in
+            self.bottomView!.hidenDatePick()
+        }
     }
     
     deinit {
