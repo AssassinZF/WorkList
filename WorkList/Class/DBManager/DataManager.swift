@@ -11,7 +11,7 @@ import RealmSwift
 
 class DataManager: NSObject {
     
-    let DB = try! Realm()
+    fileprivate let DB = try! Realm()
     
     override init() {
         super.init()
@@ -21,6 +21,14 @@ class DataManager: NSObject {
     func insertTask(task:Task){
         try! DB.write {
             DB.add(task)
+        }
+    }
+    
+    func insertList(taskList:[Task]) {
+        try! DB.write {
+            for task in taskList{
+                DB.add(task)
+            }
         }
     }
     

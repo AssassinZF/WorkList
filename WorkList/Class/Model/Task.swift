@@ -2,50 +2,65 @@
 //  Task.swift
 //  WorkList
 //
-//  Created by Daisy on 2017/7/15.
+//  Created by zhanfeng on 2017/7/20.
 //  Copyright © 2017年 lzf. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
+import Realm
 
-//任务等级
-enum TaskRand:Int{
-    case low = 1
-    case middling
-    case height
-    func currentRand(endTime:Date) -> TaskRand {
-        let nowDate = Date()
-        let secone = endTime.timeIntervalSince1970
-        let nowSecone = nowDate.timeIntervalSince1970
-        let s = secone - nowSecone
-        if s <= 30*60 {
-            return .height
-        }else if s <= 60*60{
-            return .middling
+enum PriorityType:Int {
+    case PriorityTypeLow = 0
+    case PriorityTypeMidding
+    case PriorityTypeHeight
+    
+    static func getTaskPriorityWithendTime(endTime:Date) -> PriorityType {
+        let currenTimeSecond = Date().timeIntervalSince1970
+        let endTimeSecond = endTime.timeIntervalSince1970
+        if currenTimeSecond >= endTimeSecond {
+            return .PriorityTypeLow
+        }
+        let second = endTimeSecond - currenTimeSecond
+        if second <= 60*30 {
+            return .PriorityTypeHeight
+        }else if second <= 2*60*60 {
+            return .PriorityTypeMidding
         }else{
-             return .low
+            return .PriorityTypeLow
         }
     }
 }
 
-enum TaskType:Int{
-    case TaskTypeCommon = 1//普通类型
-    case TaskTypeAlert//提醒任务
-}
-
-class Task: Object{
-    dynamic var creatTime:Date = Date()
-    dynamic var taskInfo:String?
+class Task: Object {
+    
+    dynamic let creatTime:Date = Date()
+    dynamic var modifityTime:Date = Date()
+    dynamic var textInfo:String = ""
     dynamic var endTime:Date?
-    dynamic var outTime:Bool = false //是否超时
-    dynamic var isFinish:Bool = false
-    var taskRand:TaskRand = .low
+    dynamic var taskPriorty = PriorityType.PriorityTypeLow.rawValue
+    dynamic var isFinish = false //是否完成
+    dynamic var isOverdue = false //是否逾期
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
+    var setEndTime:Date{
+        set{
+            endTime = newValue
+            taskPriorty = PriorityType.getTaskPriorityWithendTime(endTime: endTime!).rawValue
+        }
+        get{
+            return Date()
+        }
+    }
+    
+    func contentHeight(task:Task) -> CGFloat {
+        let maxHeight = UILabel.getLabHeight(labelStr: task.textInfo as NSString, font: textFont, width: kScreenWidth - leftSpace*2)
+        var height:CGFloat = max(maxHeight, textMinHeight)
+        if task.endTime != nil {
+            height += endTimeHeight
+        }
+        height += topSpace*4
+        return height
 
-    
-    
+    }
 }
+
