@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		540CB5491F258E410058C1CC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5481F258E410058C1CC /* Date+Extension.swift */; };
+		540CB58B1F25CEDB0058C1CC /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 540CB5891F25CEDB0058C1CC /* delete.png */; };
+		540CB58C1F25CEDB0058C1CC /* reEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = 540CB58A1F25CEDB0058C1CC /* reEdit.png */; };
+		540CB58E1F25EEC40058C1CC /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB58D1F25EEC40058C1CC /* EditButton.swift */; };
+		540CB5901F25EFF60058C1CC /* write.png in Resources */ = {isa = PBXBuildFile; fileRef = 540CB58F1F25EFF60058C1CC /* write.png */; };
 		542296021F185E39009EBADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542296011F185E39009EBADD /* AppDelegate.swift */; };
 		542296071F185E39009EBADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542296051F185E39009EBADD /* Main.storyboard */; };
 		542296091F185E39009EBADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542296081F185E39009EBADD /* Assets.xcassets */; };
@@ -75,6 +79,10 @@
 		4456212590B0A1F9E9CF1EE4 /* Pods_WorkListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D40415B6A24299863A514F9 /* Pods-WorkListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListUITests/Pods-WorkListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		540CB5481F258E410058C1CC /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		540CB5891F25CEDB0058C1CC /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		540CB58A1F25CEDB0058C1CC /* reEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reEdit.png; sourceTree = "<group>"; };
+		540CB58D1F25EEC40058C1CC /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		540CB58F1F25EFF60058C1CC /* write.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = write.png; sourceTree = "<group>"; };
 		542295FE1F185E39009EBADD /* WorkList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542296011F185E39009EBADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542296061F185E39009EBADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -200,6 +208,9 @@
 		54534F701F1DB30E00C3C7AA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				540CB58F1F25EFF60058C1CC /* write.png */,
+				540CB5891F25CEDB0058C1CC /* delete.png */,
+				540CB58A1F25CEDB0058C1CC /* reEdit.png */,
 				54534F831F1F420C00C3C7AA /* suiji.png */,
 				54534F7D1F1F405C00C3C7AA /* close.png */,
 				54534F7F1F1F405C00C3C7AA /* setting.png */,
@@ -292,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				54534F8B1F21B10200C3C7AA /* MainTableViewCell.swift */,
+				540CB58D1F25EEC40058C1CC /* EditButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -422,13 +434,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540CB58B1F25CEDB0058C1CC /* delete.png in Resources */,
 				54534F801F1F405C00C3C7AA /* close.png in Resources */,
 				5422960C1F185E39009EBADD /* LaunchScreen.storyboard in Resources */,
 				542296091F185E39009EBADD /* Assets.xcassets in Resources */,
 				542296071F185E39009EBADD /* Main.storyboard in Resources */,
+				540CB58C1F25CEDB0058C1CC /* reEdit.png in Resources */,
 				54534F861F1F422100C3C7AA /* naozhong.png in Resources */,
 				54534F841F1F420C00C3C7AA /* suiji.png in Resources */,
 				54534F821F1F405C00C3C7AA /* setting.png in Resources */,
+				540CB5901F25EFF60058C1CC /* write.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +611,7 @@
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,
 				ABCBF1AD1F19C87C00221E00 /* ProjectSetting.swift in Sources */,
 				ABCBF1A91F19C7FF00221E00 /* BaseViewController.swift in Sources */,
+				540CB58E1F25EEC40058C1CC /* EditButton.swift in Sources */,
 				540CB5491F258E410058C1CC /* Date+Extension.swift in Sources */,
 				54534F8C1F21B10200C3C7AA /* MainTableViewCell.swift in Sources */,
 				ABDDB04B1F1B543B00C4B986 /* Delay.swift in Sources */,
@@ -763,7 +779,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WorkList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lzf.WorkList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -782,7 +798,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WorkList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lzf.WorkList;
 				PRODUCT_NAME = "$(TARGET_NAME)";

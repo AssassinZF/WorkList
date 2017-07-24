@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 let textFont:UIFont = UIFont.systemFont(ofSize: 15)
 let timeFont:UIFont = UIFont.systemFont(ofSize: 11)
@@ -17,7 +18,7 @@ let topSpace:CGFloat = 10
 let leftSpace:CGFloat = 25
 
 
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: SwipeTableViewCell {
     
     static let Identifier: String = NSStringFromClass(MainTableViewCell.self)
     
@@ -43,10 +44,12 @@ class MainTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.white
+        self.selectionStyle = .none
         
         taskText = UILabel()
         taskText?.font = textFont
         taskText?.numberOfLines = 0
+        taskText?.textColor = UIColor.textColor
         taskText?.sizeToFit()
         self.addSubview(taskText!)
         taskText?.snp.makeConstraints { (make) in
@@ -85,8 +88,6 @@ extension MainTableViewCell{
         self.taskText?.snp.updateConstraints({ (make) in
             make.height.equalTo(height)
         })
-        
-        addDeleteLine()
         
     }
     
