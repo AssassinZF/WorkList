@@ -9,11 +9,12 @@
 import UIKit
 
 let textFont:UIFont = UIFont.systemFont(ofSize: 15)
+let timeFont:UIFont = UIFont.systemFont(ofSize: 11)
 
-let textMinHeight:CGFloat = 30
+let textMinHeight:CGFloat = 25
 let endTimeHeight:CGFloat = 15
-let topSpace:CGFloat = 15
-let leftSpace:CGFloat = 15
+let topSpace:CGFloat = 10
+let leftSpace:CGFloat = 25
 
 
 class MainTableViewCell: UITableViewCell {
@@ -44,24 +45,24 @@ class MainTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor.white
         
         taskText = UILabel()
-        taskText?.font = UIFont.systemFont(ofSize: 17)
+        taskText?.font = textFont
         taskText?.numberOfLines = 0
-        taskText?.backgroundColor = UIColor.flatGray
         taskText?.sizeToFit()
         self.addSubview(taskText!)
         taskText?.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(leftSpace)
+            make.left.equalToSuperview().offset(leftSpace)
+            make.top.equalToSuperview().offset(topSpace)
             make.right.equalToSuperview().offset(-leftSpace)
             make.height.equalTo(leftSpace*2)
         }
         endTimeLabel = UILabel()
-        endTimeLabel?.font = UIFont.systemFont(ofSize: 12)
-        taskText?.backgroundColor = UIColor.flatMint
+        endTimeLabel?.font = timeFont
+        endTimeLabel?.textColor = UIColor.flatRed
         self.addSubview(endTimeLabel!)
         endTimeLabel?.snp.makeConstraints({ (make) in
-            make.left.equalTo(textLabel!)
-            make.top.equalTo(textLabel!.snp.bottom)
-            make.height.equalTo(leftSpace)
+            make.left.equalTo(taskText!)
+            make.top.equalTo(taskText!.snp.bottom)
+            make.height.equalTo(endTimeHeight)
         })
         
     }
@@ -75,18 +76,18 @@ class MainTableViewCell: UITableViewCell {
 //MARK:update cell
 extension MainTableViewCell{
     
-    fileprivate func updateCell() {
+     func updateCell() {
         self.taskText?.text = self.task?.textInfo
-        
+        self.endTimeLabel?.text = Date.stringWithCurrentDate()
         
         let maxHeight = UILabel.getLabHeight(labelStr: (taskText?.text)! as NSString, font: (taskText?.font)!, width: kScreenWidth - leftSpace*2)
         let height = max(maxHeight, textMinHeight)
         self.taskText?.snp.updateConstraints({ (make) in
-            make.left.top.equalToSuperv iew().offset(leftSpace)
-            make.right.equalToSuperview().offset(-leftSpace)
             make.height.equalTo(height)
         })
-        print(height)
+        
+        addDeleteLine()
+        
     }
     
     override func layoutSubviews() {
@@ -94,9 +95,12 @@ extension MainTableViewCell{
         
     }
     
+    //MARK:左滑删除任务
     func addDeleteLine() {
-        let lineStr = NSAttributedString(string: (self.taskText?.text)!,attributes: [NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue])
-        self.taskText?.attributedText = lineStr
+        self.taskText?.textColor = UIColor.flatGray
+        let attributeStr = NSMutableAttributedString(string:(self.taskText?.text)!)
+        attributeStr.addAttributes([NSBaselineOffsetAttributeName:0,NSStrikethroughStyleAttributeName:1], range: NSMakeRange(0, attributeStr.length))
+        self.taskText?.attributedText = attributeStr
     }
 
 }

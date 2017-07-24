@@ -55,10 +55,10 @@ class Task: Object {
     func contentHeight(task:Task) -> CGFloat {
         let maxHeight = UILabel.getLabHeight(labelStr: task.textInfo as NSString, font: textFont, width: kScreenWidth - leftSpace*2)
         var height:CGFloat = max(maxHeight, textMinHeight)
-        if task.endTime != nil {
+//        if task.endTime != nil {
             height += endTimeHeight
-        }
-        height += topSpace*4
+//        }
+        height += topSpace*2
         return height
 
     }

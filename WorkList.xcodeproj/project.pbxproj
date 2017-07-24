@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540CB5491F258E410058C1CC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5481F258E410058C1CC /* Date+Extension.swift */; };
 		542296021F185E39009EBADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542296011F185E39009EBADD /* AppDelegate.swift */; };
 		542296071F185E39009EBADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542296051F185E39009EBADD /* Main.storyboard */; };
 		542296091F185E39009EBADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542296081F185E39009EBADD /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		0A8E46BF8B5EFBB2B0876483 /* Pods-WorkListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListUITests/Pods-WorkListUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4456212590B0A1F9E9CF1EE4 /* Pods_WorkListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D40415B6A24299863A514F9 /* Pods-WorkListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListUITests/Pods-WorkListUITests.release.xcconfig"; sourceTree = "<group>"; };
+		540CB5481F258E410058C1CC /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		542295FE1F185E39009EBADD /* WorkList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542296011F185E39009EBADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542296061F185E39009EBADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				ABCBF1AE1F19C97700221E00 /* Color.swift */,
 				ABDDB04A1F1B543B00C4B986 /* Delay.swift */,
 				54534F8D1F21D9DC00C3C7AA /* UILabel+Extension.swift */,
+				540CB5481F258E410058C1CC /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,
 				ABCBF1AD1F19C87C00221E00 /* ProjectSetting.swift in Sources */,
 				ABCBF1A91F19C7FF00221E00 /* BaseViewController.swift in Sources */,
+				540CB5491F258E410058C1CC /* Date+Extension.swift in Sources */,
 				54534F8C1F21B10200C3C7AA /* MainTableViewCell.swift in Sources */,
 				ABDDB04B1F1B543B00C4B986 /* Delay.swift in Sources */,
 				ABCBF1C01F1A18DE00221E00 /* DataManager.swift in Sources */,

@@ -20,6 +20,8 @@ class MainViewController: BaseViewController {
         tbw.backgroundColor = UIColor.white
         tbw.delegate = self
         tbw.dataSource = self
+        tbw.tableFooterView = UIView()
+        tbw.separatorStyle = .none
         tbw.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.Identifier)
         self.view.addSubview(tbw)
         tbw.snp.makeConstraints { (make) in
@@ -30,15 +32,7 @@ class MainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let task = Task()
-//        task.textInfo = "MainViewController:UITableViewDataSource,UITableViewDelegate"
-//        
-//        DBManager.insertTask(task: task)
-        
         reloadDataBase()
-
-        
 
     }
 
@@ -49,6 +43,7 @@ class MainViewController: BaseViewController {
     
     private func reloadDataBase() {
         taskList = DBManager.queryAlllist()
+        
         tableView.reloadData()
     }
     
@@ -73,5 +68,13 @@ extension MainViewController:UITableViewDataSource,UITableViewDelegate{
         let task = taskList?[indexPath.row]
         return (task?.contentHeight(task: task!))!
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default, title: "") { (deleteAction, index) in
+            
+        }
+        
+    }
+    
     
 }

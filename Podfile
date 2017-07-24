@@ -7,6 +7,8 @@ target 'WorkList' do
 pod 'Alamofire', '~> 4.4'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod 'SnapKit', '~> 3.2.0'
+pod 'SwipeCellKit'#cell 侧滑自定义 Action https://github.com/SwipeCellKit/SwipeCellKit
+
 
 
   # Pods for WorkList

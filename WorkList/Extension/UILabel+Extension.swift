@@ -16,17 +16,8 @@ extension UILabel{
         let priceStr = labelStr
         let attributes = [NSFontAttributeName:font]
         let size = priceStr.boundingRect(with: CGSize.init(width: width, height: 1000), options: .usesLineFragmentOrigin, attributes: attributes, context: nil).size
-        return size.height+5
+        return size.height+3
         
-        
-        
-//        let statusLabelText: NSString = labelStr
-//        let size = CGSize(width: width, height: 900.0)
-//        let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
-//        let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : Any], context: nil).size
-//        return strSize.height
     }
-    
-    
     
 }
