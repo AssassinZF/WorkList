@@ -16,8 +16,8 @@ class MainViewController: BaseViewController {
     
     var isSwipeRightEnabled = false//cell 禁止 右扫
 
-    
     fileprivate let DBManager = DataManager()
+    
     lazy fileprivate var taskList:Array<Task> = {
         return [Task]()
     }()
@@ -47,6 +47,13 @@ class MainViewController: BaseViewController {
         return btn
     }()
     
+    fileprivate lazy var textEditView:TextEditView = {
+        [unowned self] in
+        let editView = TextEditView()
+        self.view.addSubview(editView)
+        return editView
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +70,10 @@ class MainViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func reloadDataBase() {
         self.taskList.removeAll()
         let result:Results<Task> = DBManager.queryAlllist()
@@ -76,15 +87,19 @@ class MainViewController: BaseViewController {
         tableView.reloadData()
     }
     
+    //MARK: 模糊背景处理
+    fileprivate func visualEffectView() {
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
+        effectView.frame = self.view.frame;
+        self.view.addSubview(effectView)
+        self.view.bringSubview(toFront: self.wirteBtn)
+    }
+    
 
 }
 
 //MARK: TableViewDelegate Method
 extension MainViewController:UITableViewDataSource,UITableViewDelegate{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.taskList.count
@@ -156,13 +171,48 @@ extension MainViewController:EditButtonDelegate{
         case .edit:
             self.wirteBtn.animationChange(time: 0.5, isDown:true, addHeight: 0)
         case .random:
-            self.wirteBtn.animationChange(time: 0.5, isDown: false, addHeight: 221)
+            self.textEditView.didEditState()
+            visualEffectView()
+
         default:
             dbugLog(message: "")
         }
     }
 }
 
+//MARK: 键盘监听处理
+extension MainViewController{
+    
+    fileprivate func addKeyboardNotifiter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    //键盘的出现
+    @objc private func keyBoardWillShow(_ notification: Notification){
+        //获取userInfo
+        let kbInfo = notification.userInfo
+        //获取键盘的size
+        let kbRect = (kbInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //键盘弹出的时间
+        let duration = kbInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        
+        self.textEditView.showPull(duration: duration)
+        
+        self.wirteBtn.animationChange(time: duration, isDown: false, addHeight: kbRect.height)
+
+        
+    }
+    
+    //键盘的隐藏
+    @objc private func keyBoardWillHide(_ notification: Notification){
+//        let kbInfo = notification.userInfo
+//        let kbRect = (kbInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//        let changeY = kbRect.origin.y
+//        let duration = kbInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
+    }
+
+}
 
 
 
