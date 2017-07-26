@@ -8,15 +8,15 @@
 
 import UIKit
 
-let btnSize = CGSize(width: 40, height: 40)
+let btnSize = CGSize(width: 44, height: 44)
 let btnOrigin = CGPoint(x: kScreenWidth/2 - btnSize.width/2, y: kScreenHeight - btnSize.width*1.5)
 
 enum ButtonType {
-    case edit,random,clock
+    case normal,random,clock
     
     func backImage() -> UIImage {
         switch self {
-        case .edit:
+        case .normal:
             return #imageLiteral(resourceName: "write.png")
         case .random:
             return UIImage.init(named: "suiji.png")!
@@ -27,7 +27,7 @@ enum ButtonType {
     
     func next() -> ButtonType {
         switch self {
-        case .edit:
+        case .normal:
             return .random
         case .random:
             return .clock
@@ -43,7 +43,7 @@ protocol EditButtonDelegate{
 
 class EditButton: UIButton {
     
-    var btnType:ButtonType = .edit{
+    var btnType:ButtonType = .normal{
         didSet{
             self.setImage(btnType.backImage(), for: .normal)
         }
@@ -57,13 +57,12 @@ class EditButton: UIButton {
         let f = CGRect(origin: btnOrigin, size: btnSize)
         super.init(frame: f)
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.themeColor.cgColor
+        self.layer.borderColor = UIColor.subTextColor.cgColor
         self.layer.cornerRadius = btnSize.width/2
-        self.btnType = .edit
         self.setImage(btnType.backImage(), for: .normal)
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowColor = UIColor.flatBlack.cgColor
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+//        self.layer.shadowOpacity = 0.5
+//        self.layer.shadowColor = UIColor.flatBlack.cgColor
+//        self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.addTarget(self, action: #selector(clickButton), for: .touchUpInside)
     }
     
@@ -72,8 +71,6 @@ class EditButton: UIButton {
     }
     
     func clickButton() {
-        guard self.btnType != .clock else {return /*时钟状态不能二次点击*/ }
-        self.btnType = self.btnType.next()
         if clickDelegate != nil {
             clickDelegate!.clickAction(editButton: self)
         }
@@ -81,15 +78,15 @@ class EditButton: UIButton {
     
     func showWithAnimation() {
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .curveEaseOut, animations: {
-            self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-
-        }, completion: nil)
+//        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .curveEaseOut, animations: {
+//            self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+//
+//        }, completion: nil)
         
         self.transform = CGAffineTransform(scaleX: 0, y: 0)
-        UIView.animate(withDuration: 0.2,
+        UIView.animate(withDuration: 0.5,
                        animations: { 
-                        self.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+                        self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }) { (completion) in
             UIView.animate(withDuration: 0.2, animations: {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -100,9 +97,7 @@ class EditButton: UIButton {
     }
     
     func animationChange(time:TimeInterval,isDown:Bool,addHeight:CGFloat) {
-        
         let tagerOrigin = CGPoint(x: btnOrigin.x, y: isDown ? btnOrigin.y : btnOrigin.y - addHeight)
-        
         UIView.springAnimatin(withDuration: 0.5, delay: 0, animations: {
             var frame = self.frame
             frame.origin = tagerOrigin

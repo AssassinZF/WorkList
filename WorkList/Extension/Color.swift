@@ -73,7 +73,7 @@ extension UIView{
     
     class func springAnimatin(withDuration duration: TimeInterval, delay: TimeInterval,animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil){
         
-        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: animations, completion: completion)
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .curveEaseOut, animations: animations, completion: completion)
         
     }
 }

@@ -15,10 +15,12 @@ import SwipeCellKit
 class MainViewController: BaseViewController {
     
     var isSwipeRightEnabled = false//cell 禁止 右扫
+    var keyboardDuration:TimeInterval?//保存键盘动画时间
+    
 
     fileprivate let DBManager = DataManager()
     
-    lazy fileprivate var taskList:Array<Task> = {
+    fileprivate lazy var taskList:Array<Task> = {
         return [Task]()
     }()
     
@@ -50,14 +52,45 @@ class MainViewController: BaseViewController {
     fileprivate lazy var textEditView:TextEditView = {
         [unowned self] in
         let editView = TextEditView()
+        editView.textView.delegate = self
         self.view.addSubview(editView)
+        self.view.bringSubview(toFront: editView)
         return editView
+    }()
+    
+    //模糊背景
+    fileprivate lazy var effectView:UIVisualEffectView = {
+        [unowned self] in
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
+        effectView.frame = self.view.frame;
+        self.view.addSubview(effectView)
+        return effectView
+    }()
+    
+    fileprivate lazy var clockView:ClockView = {
+        [unowned self] in
+        let clockView = ClockView()
+        self.view.addSubview(clockView)
+        return clockView
     }()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadDataBase()
+        addKeyboardNotifiter()
+                
+        self.clockView.clickButtonBlock = { [unowned self]
+            (clickIndex:Int,selectDate:Date) in
+            if clickIndex == 0 {
+                self.textEditView.textView.becomeFirstResponder()
+            }else{
+                self.addNewTask(text: self.textEditView.textView.text, selectDate: selectDate)
+                self.clockView.showClockView(isShow: false)
+                self.overEdit()
+                
+            }
+        }
 
     }
     
@@ -77,6 +110,9 @@ class MainViewController: BaseViewController {
     private func reloadDataBase() {
         self.taskList.removeAll()
         let result:Results<Task> = DBManager.queryAlllist()
+        if result.count <= 0 {
+            return
+        }
         var index = 0
         repeat {
             let item = result[index]
@@ -89,10 +125,9 @@ class MainViewController: BaseViewController {
     
     //MARK: 模糊背景处理
     fileprivate func visualEffectView() {
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
-        effectView.frame = self.view.frame;
         self.view.addSubview(effectView)
         self.view.bringSubview(toFront: self.wirteBtn)
+        self.view.bringSubview(toFront: self.textEditView)
     }
     
 
@@ -168,14 +203,19 @@ extension MainViewController:EditButtonDelegate{
     
     func clickAction(editButton: EditButton) {
         switch editButton.btnType {
-        case .edit:
-            self.wirteBtn.animationChange(time: 0.5, isDown:true, addHeight: 0)
-        case .random:
-            self.textEditView.didEditState()
+        case .normal:
             visualEffectView()
-
-        default:
-            dbugLog(message: "")
+            self.textEditView.textView.becomeFirstResponder()
+            self.wirteBtn.btnType = .random
+        case .random:
+            self.textEditView.textView.text = "我是随机任务哦"
+            self.wirteBtn.btnType = .clock
+        case .clock:
+            if self.textEditView.textView.isFirstResponder {
+                self.textEditView.textView.resignFirstResponder()
+                self.clockView.showClockView(isShow: true)
+                self.view.bringSubview(toFront: self.clockView)
+            }
         }
     }
 }
@@ -197,21 +237,81 @@ extension MainViewController{
         //键盘弹出的时间
         let duration = kbInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
         
-        self.textEditView.showPull(duration: duration)
+        self.keyboardDuration = duration
         
         self.wirteBtn.animationChange(time: duration, isDown: false, addHeight: kbRect.height)
-
         
+        let hasText:Bool = self.textEditView.textView.text.characters.count > 0
+        
+        self.wirteBtn.btnType = hasText ? .clock : .random
+        
+        
+        self.textEditView.showPull(duration: duration)
+        
+        self.clockView.showClockView(isShow: false)
+
     }
     
     //键盘的隐藏
     @objc private func keyBoardWillHide(_ notification: Notification){
-//        let kbInfo = notification.userInfo
-//        let kbRect = (kbInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-//        let changeY = kbRect.origin.y
-//        let duration = kbInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
     }
 
+}
+
+//MARK: TextView delegate
+extension MainViewController:UITextViewDelegate,UIScrollViewDelegate{
+    
+    //MARK:UITextViewDelegate
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            if self.textEditView.textView.text.characters.count > 0{
+                //有任务添加
+                addNewTask(text: self.textEditView.textView.text, selectDate: nil)
+            }
+            overEdit()
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        var totalText = self.textEditView.textView.text
+        if (totalText?.characters.count)! > 0 {
+            self.wirteBtn.btnType = .clock
+        }else{
+            self.wirteBtn.btnType = .random
+            textEditView.textLine.isHidden = true
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if ((scrollView as? UITextView) != nil) {
+            textEditView.showLine()
+        }
+        
+    }
+    
+    
+    fileprivate func overEdit() {
+        self.textEditView.isHidden = true
+        self.textEditView.textView.text = nil
+        self.textEditView.textView.resignFirstResponder()
+        self.wirteBtn.animationChange(time: keyboardDuration!, isDown: true, addHeight: 0)
+        self.wirteBtn.btnType = .normal
+        self.effectView.removeFromSuperview()
+    }
+    
+    func addNewTask(text:String,selectDate:Date?) {
+        dbugLog(message: "task:\(text), date:\(String(describing: selectDate))")
+        let task = Task()
+        task.textInfo = text
+        if let endT = selectDate {
+            task.endTime = endT
+        }
+        DBManager.insertTask(task: task)
+        self.taskList.append(task)
+        self.tableView.reloadData()
+    }
 }
 
 
