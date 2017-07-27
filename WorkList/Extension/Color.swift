@@ -11,14 +11,19 @@ import UIKit
 import ChameleonFramework
 
 extension UIColor{
-    static var themeColor:UIColor{ return UIColor.flatGray}
+    static var themeColor:UIColor{ return UIColor.flatBlue}
     static var mainBackColor:UIColor{ return UIColor.white }
+    
+    
+    
     static var textColor:UIColor{
         return self.colorWithHexString(hex: "515151")
     }
     static var subTextColor:UIColor{
         return self.colorWithHexString(hex: "8a8a8a")
     }
+    
+    
     
     //16 进制
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
@@ -59,8 +64,6 @@ extension UIColor{
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
     }
-
-    
 }
 
 extension UIView{

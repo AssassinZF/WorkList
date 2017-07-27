@@ -16,8 +16,8 @@ class MainViewController: BaseViewController {
     
     var isSwipeRightEnabled = false//cell 禁止 右扫
     var keyboardDuration:TimeInterval?//保存键盘动画时间
+    var pullHeaderView:PullHeaderView?
     
-
     fileprivate let DBManager = DataManager()
     
     fileprivate lazy var taskList:Array<Task> = {
@@ -77,9 +77,18 @@ class MainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //添加tableview 下拉视图
+        pullHeaderView = PullHeaderView()
+        self.tableView.addSubview(pullHeaderView!)
+        
+        //从数据库读取所有没有完成的任务
         reloadDataBase()
+        
+        //添加键盘通知
         addKeyboardNotifiter()
-                
+        
+        //点击闹钟回调
         self.clockView.clickButtonBlock = { [unowned self]
             (clickIndex:Int,selectDate:Date) in
             if clickIndex == 0 {
@@ -91,6 +100,9 @@ class MainViewController: BaseViewController {
                 
             }
         }
+        
+        //添加搜索界面
+        
 
     }
     
@@ -154,8 +166,8 @@ extension MainViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.Identifier, for: indexPath) as! MainTableViewCell
-        currentCell.addDeleteLine()
+        let vc = FocusModelViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -167,6 +179,8 @@ extension MainViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if orientation == .left {
             //删除任务
+            let currentCell:MainTableViewCell = tableView.cellForRow(at: indexPath) as! MainTableViewCell
+            currentCell.addDeleteLine()
             return nil
         }
         
@@ -294,7 +308,10 @@ extension MainViewController:UITextViewDelegate,UIScrollViewDelegate{
         if ((scrollView as? UITextView) != nil) {
             textEditView.showLine()
         }else{
-            
+            let offy = scrollView.contentOffset.y
+            if offy < 0 {
+                pullHeaderView?.setOffy = abs(scrollView.contentOffset.y)
+            }
         }
         
     }

@@ -15,6 +15,8 @@
 		540CB5921F2839A60058C1CC /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5911F2839A60058C1CC /* TextEditView.swift */; };
 		540CB5941F2878B40058C1CC /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5931F2878B40058C1CC /* ClockView.swift */; };
 		540CB5961F28B32C0058C1CC /* PullHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5951F28B32C0058C1CC /* PullHeaderView.swift */; };
+		540CB5981F299E850058C1CC /* FocusModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5971F299E850058C1CC /* FocusModelViewController.swift */; };
+		540CB59C1F29DC720058C1CC /* CountTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB59B1F29DC720058C1CC /* CountTimeView.swift */; };
 		542296021F185E39009EBADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542296011F185E39009EBADD /* AppDelegate.swift */; };
 		542296071F185E39009EBADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542296051F185E39009EBADD /* Main.storyboard */; };
 		542296091F185E39009EBADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542296081F185E39009EBADD /* Assets.xcassets */; };
@@ -89,6 +91,8 @@
 		540CB5911F2839A60058C1CC /* TextEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
 		540CB5931F2878B40058C1CC /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		540CB5951F28B32C0058C1CC /* PullHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullHeaderView.swift; sourceTree = "<group>"; };
+		540CB5971F299E850058C1CC /* FocusModelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusModelViewController.swift; sourceTree = "<group>"; };
+		540CB59B1F29DC720058C1CC /* CountTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountTimeView.swift; sourceTree = "<group>"; };
 		542295FE1F185E39009EBADD /* WorkList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542296011F185E39009EBADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542296061F185E39009EBADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				54534F871F20C99200C3C7AA /* MainViewController.swift */,
+				540CB5971F299E850058C1CC /* FocusModelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				540CB5911F2839A60058C1CC /* TextEditView.swift */,
 				540CB5931F2878B40058C1CC /* ClockView.swift */,
 				540CB5951F28B32C0058C1CC /* PullHeaderView.swift */,
+				540CB59B1F29DC720058C1CC /* CountTimeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -617,10 +623,12 @@
 			files = (
 				540CB5961F28B32C0058C1CC /* PullHeaderView.swift in Sources */,
 				54534F8E1F21D9DC00C3C7AA /* UILabel+Extension.swift in Sources */,
+				540CB5981F299E850058C1CC /* FocusModelViewController.swift in Sources */,
 				540CB5941F2878B40058C1CC /* ClockView.swift in Sources */,
 				540CB5921F2839A60058C1CC /* TextEditView.swift in Sources */,
 				ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */,
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,
+				540CB59C1F29DC720058C1CC /* CountTimeView.swift in Sources */,
 				ABCBF1AD1F19C87C00221E00 /* ProjectSetting.swift in Sources */,
 				ABCBF1A91F19C7FF00221E00 /* BaseViewController.swift in Sources */,
 				540CB58E1F25EEC40058C1CC /* EditButton.swift in Sources */,

@@ -60,6 +60,7 @@ class EditButton: UIButton {
         self.layer.borderColor = UIColor.subTextColor.cgColor
         self.layer.cornerRadius = btnSize.width/2
         self.setImage(btnType.backImage(), for: .normal)
+        self.backgroundColor = UIColor.white
 //        self.layer.shadowOpacity = 0.5
 //        self.layer.shadowColor = UIColor.flatBlack.cgColor
 //        self.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -79,11 +80,11 @@ class EditButton: UIButton {
     func showWithAnimation() {
         
         self.transform = CGAffineTransform(scaleX: 0, y: 0)
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.2,
                        animations: { 
-                        self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                        self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }) { (completion) in
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
 
             })
@@ -92,11 +93,11 @@ class EditButton: UIButton {
     
     func animationChange(time:TimeInterval,isDown:Bool,addHeight:CGFloat) {
         let tagerOrigin = CGPoint(x: btnOrigin.x, y: isDown ? btnOrigin.y : btnOrigin.y - addHeight)
-        UIView.springAnimatin(withDuration: 0.5, delay: 0, animations: {
+        UIView.animate(withDuration: time, delay: 0, options: .curveEaseOut, animations: { 
             var frame = self.frame
             frame.origin = tagerOrigin
             self.frame = frame
-        })
+        }, completion: nil)
     }
 
 }

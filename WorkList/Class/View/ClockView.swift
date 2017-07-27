@@ -24,7 +24,13 @@ class ClockView: UIView {
         let frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: ClockHeight)
         super.init(frame: frame)
         self.frame = frame
-        self.backgroundColor = UIColor.purple
+        self.backgroundColor = UIColor.white
+        
+        let topLine = UIView(frame: CGRect(x: 0, y: 35, width: kScreenWidth - 20, height: 1))
+        topLine.backgroundColor = UIColor.subTextColor
+        topLine.center = CGPoint(x: kScreenWidth/2, y: 35 + 0.5)
+        self.addSubview(topLine)
+        
         let leftButton = UIButton(type: .custom)
         leftButton.setTitle("取消", for: .normal)
         leftButton.setTitleColor(UIColor.textColor, for: .normal)
@@ -45,7 +51,7 @@ class ClockView: UIView {
         datePick.locale = Locale(identifier: "zh_CN")
         datePick.addTarget(self, action: #selector(dateChanged),
                              for: .valueChanged)
-        datePick.frame = CGRect(x: 0, y: 35, width: kScreenWidth, height: ClockHeight - 35)
+        datePick.frame = CGRect(x: 0, y: 36, width: kScreenWidth, height: ClockHeight - 36)
         self.addSubview(datePick)
     
     }
