@@ -15,4 +15,10 @@ extension Date{
         dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
         return dateFormat.string(from: Date())
     }
+    
+    func stringWithDate() ->String{
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
+        return dateFormat.string(from: self)
+    }
 }

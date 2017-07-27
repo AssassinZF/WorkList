@@ -78,11 +78,6 @@ class EditButton: UIButton {
     
     func showWithAnimation() {
         
-//        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .curveEaseOut, animations: {
-//            self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-//
-//        }, completion: nil)
-        
         self.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIView.animate(withDuration: 0.5,
                        animations: { 
@@ -92,7 +87,6 @@ class EditButton: UIButton {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
 
             })
-            
         }
     }
     

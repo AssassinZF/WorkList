@@ -153,6 +153,11 @@ extension MainViewController:UITableViewDataSource,UITableViewDelegate{
         return task.contentHeight(task: task)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.Identifier, for: indexPath) as! MainTableViewCell
+        currentCell.addDeleteLine()
+    }
+    
 }
 
 //MARK:Custom cell swipe Protocol
@@ -161,6 +166,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if orientation == .left {
+            //删除任务
             return nil
         }
         
@@ -258,7 +264,7 @@ extension MainViewController{
 
 }
 
-//MARK: TextView delegate
+//MARK: TextView delegate UIScrollViewDelegate
 extension MainViewController:UITextViewDelegate,UIScrollViewDelegate{
     
     //MARK:UITextViewDelegate
@@ -287,6 +293,8 @@ extension MainViewController:UITextViewDelegate,UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if ((scrollView as? UITextView) != nil) {
             textEditView.showLine()
+        }else{
+            
         }
         
     }

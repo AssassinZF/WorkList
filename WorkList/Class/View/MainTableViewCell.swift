@@ -81,7 +81,11 @@ extension MainTableViewCell{
     
      func updateCell() {
         self.taskText?.text = self.task?.textInfo
-        self.endTimeLabel?.text = Date.stringWithCurrentDate()
+        if let date = self.task?.endTime {
+            self.endTimeLabel?.text = date.stringWithDate()
+        }else{
+            self.endTimeLabel?.isHidden = true
+        }
         
         let maxHeight = UILabel.getLabHeight(labelStr: (taskText?.text)! as NSString, font: (taskText?.font)!, width: kScreenWidth - leftSpace*2)
         let height = max(maxHeight, textMinHeight)
@@ -89,15 +93,12 @@ extension MainTableViewCell{
             make.height.equalTo(height)
         })
         
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        addDeleteLine()
         
     }
     
     //MARK:左滑删除任务
-    func addDeleteLine() {
+    public func addDeleteLine() {
         self.taskText?.textColor = UIColor.flatGray
         let attributeStr = NSMutableAttributedString(string:(self.taskText?.text)!)
         attributeStr.addAttributes([NSBaselineOffsetAttributeName:0,NSStrikethroughStyleAttributeName:1], range: NSMakeRange(0, attributeStr.length))
