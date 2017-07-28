@@ -166,7 +166,9 @@ extension MainViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = taskList[indexPath.row]
         let vc = FocusModelViewController()
+        vc.task = task
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
