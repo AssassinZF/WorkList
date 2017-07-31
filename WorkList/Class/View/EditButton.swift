@@ -61,9 +61,6 @@ class EditButton: UIButton {
         self.layer.cornerRadius = btnSize.width/2
         self.setImage(btnType.backImage(), for: .normal)
         self.backgroundColor = UIColor.white
-//        self.layer.shadowOpacity = 0.5
-//        self.layer.shadowColor = UIColor.flatBlack.cgColor
-//        self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.addTarget(self, action: #selector(clickButton), for: .touchUpInside)
     }
     
@@ -78,17 +75,12 @@ class EditButton: UIButton {
     }
     
     func showWithAnimation() {
-        
-        self.transform = CGAffineTransform(scaleX: 0, y: 0)
-        UIView.animate(withDuration: 0.2,
-                       animations: { 
-                        self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        }) { (completion) in
-            UIView.animate(withDuration: 0.1, animations: {
-                self.transform = CGAffineTransform(scaleX: 1, y: 1)
-
-            })
-        }
+//        UIView.animate(withDuration: 0.7, delay: 0.5, options: .curveEaseOut, animations: {
+//            var origin = self.center
+//            origin.y = kScreenHeight - btnSize.width
+//            self.center = origin
+//            self.alpha = 1.0
+//        }, completion: nil)
     }
     
     func animationChange(time:TimeInterval,isDown:Bool,addHeight:CGFloat) {
@@ -97,6 +89,7 @@ class EditButton: UIButton {
             var frame = self.frame
             frame.origin = tagerOrigin
             self.frame = frame
+            self.alpha = 1.0
         }, completion: nil)
     }
 

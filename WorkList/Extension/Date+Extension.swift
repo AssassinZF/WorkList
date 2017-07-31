@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+enum DateFormatType:String {
+    case Y = "YYYY"
+    case YM = "YYYY-MM"
+    case YMD = "YYY-MM-dd"
+    case YMdHm = "YYYY-MM-dd HH:mm"
+}
+
 extension Date{
     static func stringWithCurrentDate() -> String {
         let dateFormat = DateFormatter()
@@ -20,5 +27,12 @@ extension Date{
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
         return dateFormat.string(from: self)
+    }
+    
+    func stringWithFormat(Format:DateFormatType) -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = Format.rawValue
+        return dateFormat.string(from: self)
+
     }
 }

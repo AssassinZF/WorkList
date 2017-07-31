@@ -45,7 +45,7 @@ enum PriorityType:Int {
 
 class Task: Object {
     
-    dynamic let creatTime:Date = Date()
+    dynamic var creatTime:Date = Date()
     dynamic var modifityTime:Date = Date()
     dynamic var textInfo:String = ""
     dynamic var endTime:Date?

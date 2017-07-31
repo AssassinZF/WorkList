@@ -8,11 +8,17 @@
 
 import UIKit
 
+enum Direction{
+    case top,down
+}
+
 let Header_h:CGFloat = 60
 
 class PullHeaderView: UIView {
     
     var offy:CGFloat = 0//下拉偏移量
+    var directionType:Direction?
+    
     
     var setOffy:CGFloat{
         set{
@@ -28,13 +34,12 @@ class PullHeaderView: UIView {
     
     
     
-    init() {
-        let frame = CGRect(x: 0, y: -Header_h, width: kScreenWidth, height: Header_h)
+    init(direction:Direction) {
+        directionType = direction
+        let frame = CGRect(x: 0, y: directionType == .top ? -Header_h : kScreenHeight, width: kScreenWidth, height: Header_h)
         super.init(frame: frame)
         self.frame = frame
         self.backgroundColor = UIColor.white
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,9 +56,9 @@ class PullHeaderView: UIView {
         beziPath.lineWidth = 1
         UIColor.themeColor.set()
         
-        let leftPoint = CGPoint(x: self.sizeW/2 - lineW/2, y: self.sizeH - lineW/2)
-        let rightPoint = CGPoint(x: self.sizeW/2 + lineW/2, y: self.sizeH - lineW/2)
-        let center = CGPoint(x: self.sizeW/2, y: self.sizeH - lineW/2)
+        let leftPoint = CGPoint(x: self.sizeW/2 - lineW/2, y: directionType == .top ? self.sizeH - lineW/2 : lineW/2)
+        let rightPoint = CGPoint(x: self.sizeW/2 + lineW/2, y: directionType == .top ? self.sizeH - lineW/2 : lineW/2)
+        let center = CGPoint(x: self.sizeW/2, y: directionType == .top ? self.sizeH - lineW/2 : lineW/2)
 
         if self.offy < lineW+lineW/2 {
             beziPath.move(to: center)
@@ -69,9 +74,19 @@ class PullHeaderView: UIView {
             beziPath.stroke()
         }else{
             var cent = center
-            cent.y = (self.sizeH - lineW/2) + (self.offy - (lineW + lineW/2))/2
-            if cent.y >= self.sizeH - lineW/4 {
-                cent.y = self.sizeH - lineW/4
+            if directionType == .top{
+                cent.y = (self.sizeH - lineW/2) + (self.offy - (lineW + lineW/2))/2
+                if cent.y >= self.sizeH - lineW/4 {
+                    cent.y = self.sizeH - lineW/4
+                }
+
+            }else{
+                cent.y = lineW/2 - (self.offy - (lineW + lineW/2))/2
+                if cent.y <= lineW/4 {
+                    cent.y = lineW/4
+                }
+
+
             }
             beziPath.move(to: cent)
             beziPath.addLine(to: leftPoint)

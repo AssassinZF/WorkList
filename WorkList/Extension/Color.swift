@@ -13,6 +13,7 @@ import ChameleonFramework
 extension UIColor{
     static var themeColor:UIColor{ return UIColor.flatBlue}
     static var mainBackColor:UIColor{ return UIColor.white }
+    static var backColor:UIColor{ return UIColor.RGBColor(r: 255.0, g: 255.0, b: 255.0)}
     
     
     
@@ -63,6 +64,9 @@ extension UIColor{
         Scanner(string: bString).scanHexInt32(&b)
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+    }
+    class func RGBColor(r:CGFloat,g:CGFloat,b:CGFloat) -> UIColor {
+        return UIColor.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: 1.0)
     }
 }
 

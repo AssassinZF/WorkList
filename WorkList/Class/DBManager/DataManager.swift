@@ -45,7 +45,7 @@ class DataManager: NSObject {
     }
     
     func queryAlllist() -> Results<Task> {
-        let lists = DB.objects(Task.self)
+        let lists = DB.objects(Task.self).sorted(byKeyPath:"creatTime", ascending: false)
         return lists
     }
 

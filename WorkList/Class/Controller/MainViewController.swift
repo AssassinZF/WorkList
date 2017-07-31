@@ -17,6 +17,9 @@ class MainViewController: BaseViewController {
     var isSwipeRightEnabled = false//cell 禁止 右扫
     var keyboardDuration:TimeInterval?//保存键盘动画时间
     var pullHeaderView:PullHeaderView?
+    private var searchVC:SearchTaskViewController = SearchTaskViewController()
+    var isSearchModel = false//是否为搜索模式
+    
     
     fileprivate let DBManager = DataManager()
     
@@ -79,7 +82,7 @@ class MainViewController: BaseViewController {
         super.viewDidLoad()
         
         //添加tableview 下拉视图
-        pullHeaderView = PullHeaderView()
+        pullHeaderView = PullHeaderView(direction: .top)
         self.tableView.addSubview(pullHeaderView!)
         
         //从数据库读取所有没有完成的任务
@@ -102,13 +105,20 @@ class MainViewController: BaseViewController {
         }
         
         //添加搜索界面
-        
+        searchVC.view.frame = CGRect(x: 0, y: -kScreenHeight, width: kScreenWidth, height: kScreenHeight)
+        self.view.addSubview(searchVC.view)
+        self.view.bringSubview(toFront: searchVC.view)
+        self.addChildViewController(searchVC)
+        searchVC.popCompletion = { [unowned self] _ in
+            self.isSearchModel = false
+        }
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         wirteBtn.showWithAnimation()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -142,6 +152,18 @@ class MainViewController: BaseViewController {
         self.view.bringSubview(toFront: self.textEditView)
     }
     
+    //MARK:跳转到搜索界面
+    func jumpSearchVC() {
+        isSearchModel = true
+        self.searchVC.reloadDataBase()
+        self.view.bringSubview(toFront: self.searchVC.view)
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+            var frame = self.searchVC.view.frame
+            frame.origin.y = 0
+            self.searchVC.view.frame = frame
+        }, completion: nil)
+        
+    }
 
 }
 
@@ -261,16 +283,21 @@ extension MainViewController{
         
         self.keyboardDuration = duration
         
-        self.wirteBtn.animationChange(time: duration, isDown: false, addHeight: kbRect.height)
         
-        let hasText:Bool = self.textEditView.textView.text.characters.count > 0
-        
-        self.wirteBtn.btnType = hasText ? .clock : .random
-        
-        
-        self.textEditView.showPull(duration: duration)
-        
-        self.clockView.showClockView(isShow: false)
+        if isSearchModel == false{
+            
+            self.wirteBtn.animationChange(time: duration, isDown: false, addHeight: kbRect.height)
+            
+            let hasText:Bool = self.textEditView.textView.text.characters.count > 0
+            
+            self.wirteBtn.btnType = hasText ? .clock : .random
+            
+            
+            self.textEditView.showPull(duration: duration)
+            
+            self.clockView.showClockView(isShow: false)
+
+        }
 
     }
     
@@ -312,10 +339,17 @@ extension MainViewController:UITextViewDelegate,UIScrollViewDelegate{
         }else{
             let offy = scrollView.contentOffset.y
             if offy < 0 {
-                pullHeaderView?.setOffy = abs(scrollView.contentOffset.y)
+                pullHeaderView?.setOffy = abs(offy)
             }
         }
         
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if abs(scrollView.contentOffset.y) > 100 {
+            jumpSearchVC()
+        }
+
     }
     
     

@@ -18,6 +18,7 @@
 		540CB5981F299E850058C1CC /* FocusModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB5971F299E850058C1CC /* FocusModelViewController.swift */; };
 		540CB59C1F29DC720058C1CC /* CountTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB59B1F29DC720058C1CC /* CountTimeView.swift */; };
 		540CB59E1F2B0D030058C1CC /* SingleOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB59D1F2B0D020058C1CC /* SingleOnce.swift */; };
+		540CB5A01F2B45220058C1CC /* SearchTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CB59F1F2B45220058C1CC /* SearchTaskViewController.swift */; };
 		542296021F185E39009EBADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542296011F185E39009EBADD /* AppDelegate.swift */; };
 		542296071F185E39009EBADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542296051F185E39009EBADD /* Main.storyboard */; };
 		542296091F185E39009EBADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542296081F185E39009EBADD /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		540CB5971F299E850058C1CC /* FocusModelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusModelViewController.swift; sourceTree = "<group>"; };
 		540CB59B1F29DC720058C1CC /* CountTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountTimeView.swift; sourceTree = "<group>"; };
 		540CB59D1F2B0D020058C1CC /* SingleOnce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleOnce.swift; sourceTree = "<group>"; };
+		540CB59F1F2B45220058C1CC /* SearchTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTaskViewController.swift; sourceTree = "<group>"; };
 		542295FE1F185E39009EBADD /* WorkList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542296011F185E39009EBADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542296061F185E39009EBADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			children = (
 				54534F871F20C99200C3C7AA /* MainViewController.swift */,
 				540CB5971F299E850058C1CC /* FocusModelViewController.swift */,
+				540CB59F1F2B45220058C1CC /* SearchTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				540CB5981F299E850058C1CC /* FocusModelViewController.swift in Sources */,
 				540CB5941F2878B40058C1CC /* ClockView.swift in Sources */,
 				540CB5921F2839A60058C1CC /* TextEditView.swift in Sources */,
+				540CB5A01F2B45220058C1CC /* SearchTaskViewController.swift in Sources */,
 				ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */,
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,
 				540CB59C1F29DC720058C1CC /* CountTimeView.swift in Sources */,
