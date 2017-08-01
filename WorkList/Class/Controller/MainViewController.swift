@@ -346,8 +346,10 @@ extension MainViewController:UITextViewDelegate,UIScrollViewDelegate{
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if abs(scrollView.contentOffset.y) > 100 {
-            jumpSearchVC()
+        if (scrollView as? UITableView) != nil && scrollView.contentOffset.y < 0{
+            if abs(scrollView.contentOffset.y) > 150 {
+                jumpSearchVC()
+            }
         }
 
     }

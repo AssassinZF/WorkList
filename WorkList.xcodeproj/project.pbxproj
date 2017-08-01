@@ -33,6 +33,8 @@
 		54534F8A1F20CA4C00C3C7AA /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54534F891F20CA4C00C3C7AA /* Task.swift */; };
 		54534F8C1F21B10200C3C7AA /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54534F8B1F21B10200C3C7AA /* MainTableViewCell.swift */; };
 		54534F8E1F21D9DC00C3C7AA /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54534F8D1F21D9DC00C3C7AA /* UILabel+Extension.swift */; };
+		54E59DE91F30339F00C3E994 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E59DE71F30339F00C3E994 /* SettingViewController.swift */; };
+		54E59DEA1F30339F00C3E994 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E59DE81F30339F00C3E994 /* SettingViewController.xib */; };
 		9903D17F98DE9E2598C13C08 /* Pods_WorkListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FCC0B04594C99DF126C57A /* Pods_WorkListTests.framework */; };
 		ABCBF1A91F19C7FF00221E00 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1A81F19C7FF00221E00 /* BaseViewController.swift */; };
 		ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBF1AA1F19C83A00221E00 /* BaseNavigationController.swift */; };
@@ -117,6 +119,8 @@
 		54534F891F20CA4C00C3C7AA /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		54534F8B1F21B10200C3C7AA /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		54534F8D1F21D9DC00C3C7AA /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		54E59DE71F30339F00C3E994 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		54E59DE81F30339F00C3E994 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		7ACD39CC6D437D5879290359 /* Pods-WorkListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkListTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkListTests/Pods-WorkListTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABCBF1A81F19C7FF00221E00 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ABCBF1AA1F19C83A00221E00 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 				54534F871F20C99200C3C7AA /* MainViewController.swift */,
 				540CB5971F299E850058C1CC /* FocusModelViewController.swift */,
 				540CB59F1F2B45220058C1CC /* SearchTaskViewController.swift */,
+				54E59DE71F30339F00C3E994 /* SettingViewController.swift */,
+				54E59DE81F30339F00C3E994 /* SettingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				542296071F185E39009EBADD /* Main.storyboard in Resources */,
 				540CB58C1F25CEDB0058C1CC /* reEdit.png in Resources */,
 				54534F861F1F422100C3C7AA /* naozhong.png in Resources */,
+				54E59DEA1F30339F00C3E994 /* SettingViewController.xib in Resources */,
 				54534F841F1F420C00C3C7AA /* suiji.png in Resources */,
 				54534F821F1F405C00C3C7AA /* setting.png in Resources */,
 				540CB5901F25EFF60058C1CC /* write.png in Resources */,
@@ -632,6 +639,7 @@
 				540CB5981F299E850058C1CC /* FocusModelViewController.swift in Sources */,
 				540CB5941F2878B40058C1CC /* ClockView.swift in Sources */,
 				540CB5921F2839A60058C1CC /* TextEditView.swift in Sources */,
+				54E59DE91F30339F00C3E994 /* SettingViewController.swift in Sources */,
 				540CB5A01F2B45220058C1CC /* SearchTaskViewController.swift in Sources */,
 				ABCBF1AB1F19C83A00221E00 /* BaseNavigationController.swift in Sources */,
 				542296021F185E39009EBADD /* AppDelegate.swift in Sources */,

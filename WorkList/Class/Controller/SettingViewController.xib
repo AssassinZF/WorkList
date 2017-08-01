@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="WorkList" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1aG-V3-Mfo">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFx-1Q-w7w">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-mg-wrf">
+                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="edX-2V-zgP"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URR-tK-7AN">
+                            <rect key="frame" x="169.5" y="17" width="35" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gw2-Gj-6Yd">
+                            <rect key="frame" x="10" y="13" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="L8b-XS-nZu"/>
+                                <constraint firstAttribute="width" constant="25" id="scW-oA-Nve"/>
+                            </constraints>
+                            <state key="normal" image="delete.png"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FMt-mg-wrf" secondAttribute="trailing" id="NMP-Lb-bkZ"/>
+                        <constraint firstItem="gw2-Gj-6Yd" firstAttribute="leading" secondItem="sFx-1Q-w7w" secondAttribute="leading" constant="10" id="OcZ-ww-mOf"/>
+                        <constraint firstItem="URR-tK-7AN" firstAttribute="centerX" secondItem="sFx-1Q-w7w" secondAttribute="centerX" id="WcX-RC-0Qp"/>
+                        <constraint firstAttribute="height" constant="44" id="XdW-U4-Jk5"/>
+                        <constraint firstItem="FMt-mg-wrf" firstAttribute="top" secondItem="gw2-Gj-6Yd" secondAttribute="bottom" constant="5" id="cHx-Np-KEi"/>
+                        <constraint firstItem="FMt-mg-wrf" firstAttribute="leading" secondItem="sFx-1Q-w7w" secondAttribute="leading" id="hTZ-w0-g7M"/>
+                        <constraint firstAttribute="bottom" secondItem="FMt-mg-wrf" secondAttribute="bottom" id="qKk-Te-g1L"/>
+                        <constraint firstItem="FMt-mg-wrf" firstAttribute="top" secondItem="URR-tK-7AN" secondAttribute="bottom" constant="5" id="zpX-4M-hba"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="sFx-1Q-w7w" secondAttribute="trailing" id="GHO-FS-ZcG"/>
+                <constraint firstItem="sFx-1Q-w7w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QHZ-G8-Xhc"/>
+                <constraint firstAttribute="trailing" secondItem="1aG-V3-Mfo" secondAttribute="trailing" id="dMK-VP-tvj"/>
+                <constraint firstItem="1aG-V3-Mfo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ewU-2I-bk1"/>
+                <constraint firstItem="sFx-1Q-w7w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fTI-fY-s6a"/>
+                <constraint firstAttribute="bottom" secondItem="1aG-V3-Mfo" secondAttribute="bottom" id="nHP-S5-uMY"/>
+                <constraint firstItem="1aG-V3-Mfo" firstAttribute="top" secondItem="sFx-1Q-w7w" secondAttribute="bottom" id="o5a-2Z-fsW"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="100.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="delete.png" width="16" height="16"/>
+    </resources>
+</document>

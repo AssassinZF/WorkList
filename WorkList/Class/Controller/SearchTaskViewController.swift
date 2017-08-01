@@ -45,15 +45,36 @@ class SearchTaskViewController: BaseViewController {
         /* 添加上拉返回效果 */
         self.tableView.addSubview(pullHeaderView)
         
+        //searchBar
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 64))
 //        searchControl.delegate = self;
         searchControl.dimsBackgroundDuringPresentation = false
-        searchControl.searchBar.showsCancelButton = false
-        searchControl.searchBar.text = "搜索"
-        searchControl.searchBar.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 40)
-//        tableView.tableHeaderView = searchControl.searchBar
+        searchControl.searchBar.placeholder = "搜索"
+        searchControl.searchBar.frame = CGRect(x: 20, y: 20, width: kScreenWidth - 80, height: 30)
+        searchControl.searchBar.backgroundColor = UIColor.clear
+        searchControl.searchBar.backgroundImage = UIImage.init()
+        searchControl.searchBar.layer.borderWidth = 1
+        searchControl.searchBar.layer.borderColor = UIColor.subTextColor.cgColor
+        headerView.addSubview(searchControl.searchBar)
+        tableView.tableHeaderView = headerView
+        
+        let settingBtn = UIButton(type: .custom)
+        settingBtn.setImage(UIImage.init(named: "setting.png"), for: .normal)
+        settingBtn.addTarget(self, action: #selector(clickSetting(button:)), for: .touchUpInside)
+        headerView.addSubview(settingBtn)
+        settingBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(searchControl.searchBar.snp.right).offset(10)
+            make.centerY.equalTo(searchControl.searchBar.snp.centerY)
+            make.size.equalTo(CGSize(width: 30, height: 30))
+        }
+        
+
+
         
         /* 加载数据了数据 */
         reloadDataBase()
+        
+        pullHeaderView.frame = CGRect(x: 0, y: tableView.contentSize.height, width: kScreenWidth, height: pullHeaderView.frame.size.height)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +83,11 @@ class SearchTaskViewController: BaseViewController {
     
     private func addTableViewHeaderView() {
         
+    }
+    
+    func clickSetting(button:UIButton) {
+        let setting = SettingViewController(nibName: "SettingViewController", bundle: nil)
+        self.present(setting, animated: true, completion: nil)
     }
     
      func reloadDataBase() {
@@ -90,9 +116,8 @@ class SearchTaskViewController: BaseViewController {
             })
         }
         tableView.reloadData()
+        tableView.contentOffset = CGPoint(x: 0, y: 0)
     }
-
-
 }
 
 //MARK: TableViewDelegate Method
@@ -122,10 +147,11 @@ extension SearchTaskViewController:UITableViewDataSource,UITableViewDelegate,UIS
         let task:Task = self.historyArray[section].first!
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 20))
         headerView.backgroundColor = UIColor.backColor
-        let label = UILabel(frame: CGRect(x: 10, y: 0, width: kScreenWidth, height: 20))
+        let label = UILabel(frame: CGRect(x: 25, y: 0, width: kScreenWidth, height: 20))
         label.font = UIFont.systemFont(ofSize: 14)
         label.text = task.creatTime.stringWithFormat(Format: .YMD)
         label.textColor = UIColor.subTextColor
+        headerView.addSubview(label)
         return headerView
     }
     
@@ -152,9 +178,15 @@ extension SearchTaskViewController:UITableViewDataSource,UITableViewDelegate,UIS
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let offy = scrollView.contentOffset.y
-        if offy > 100 {
-            self.hiddenSelfView()
+        if tableView.contentSize.height>kScreenHeight {
+            if scrollView.contentOffset.y >= tableView.contentSize.height - kScreenHeight + 150 {
+                self.hiddenSelfView()
+            }
+        }else{
+            if scrollView.contentOffset.y > 150 {
+                self.hiddenSelfView()
+            }
+
         }
 
     }
@@ -172,6 +204,10 @@ extension SearchTaskViewController:UITableViewDataSource,UITableViewDelegate,UIS
         }, completion: nil)
     }
 
+    
+}
+
+extension SearchTaskViewController:UISearchControllerDelegate{
     
 }
 
